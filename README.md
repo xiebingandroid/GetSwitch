@@ -18,3 +18,8 @@ GetSwitch
         android:name="switch_app_channel_id"
         android:value="daiji_1000" />
     <!-- 获取开关 end -->
+
+    添加权限
+    <uses-permission android:name="android.permission.INTERNET"/> 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>

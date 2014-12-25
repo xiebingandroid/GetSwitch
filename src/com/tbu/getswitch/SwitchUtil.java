@@ -138,7 +138,7 @@ public class SwitchUtil {
 				(ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
 		NetworkInfo networkInfo = manager.getActiveNetworkInfo();
 		if(networkInfo != null && networkInfo.isConnected()){
-			return networkInfo.getType() == ConnectivityManager.TYPE_MOBILE;
+			return networkInfo.getSubtype() == ConnectivityManager.TYPE_MOBILE_MMS;
 		}
 		return false;
 	}
