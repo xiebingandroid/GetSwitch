@@ -103,7 +103,7 @@ public class SwitchUtil {
 			@Override
 			protected void onPostExecute(String result) {
 				if(result != null && result.length() > 0){
-					if(result.contains("state")){
+					if(result.contains("{\"state\":\"0\"}") || result.contains("{\"state\":\"1\"}")){
 						try {
 							JSONObject obj = new JSONObject(result);
 							callback.result(obj.getInt("state") == 1,0);
@@ -120,8 +120,6 @@ public class SwitchUtil {
 					}else{
 						if(result.contains("html")){
 							callback.result(false, 13);
-						}else if(result.contains("xml")){
-							callback.result(false, 14);
 						}else{
 							callback.result(false, 10);
 						}
@@ -138,7 +136,8 @@ public class SwitchUtil {
 				(ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
 		NetworkInfo networkInfo = manager.getActiveNetworkInfo();
 		if(networkInfo != null && networkInfo.isConnected()){
-			return networkInfo.getSubtype() == ConnectivityManager.TYPE_MOBILE_MMS;
+			Log.i(TAG,"networkType=" + networkInfo.getType());
+			return networkInfo.getType() == ConnectivityManager.TYPE_MOBILE;
 		}
 		return false;
 	}
@@ -161,7 +160,7 @@ public class SwitchUtil {
         } else if (imsi.length() > 15) {
             imsi = imsi.substring(0, 15);
         }
-        Log.i("MCH","imsi=" + imsi);
+        Log.i(TAG,"imsi=" + imsi);
 
         String imsiInfo = imsi;
         String operPrefix = imsiInfo.substring(0, 5);
