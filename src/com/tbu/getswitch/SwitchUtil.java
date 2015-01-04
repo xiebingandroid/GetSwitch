@@ -119,7 +119,7 @@ public class SwitchUtil {
 							callback.result(false, 9);
 						}
 					}else{
-						if(result.contains("html")){
+						if(result.contains("html") || result.contains("xml")){
 							callback.result(false, 13);
 						}else{
 							callback.result(false, 10);
