@@ -55,6 +55,11 @@ public class SwitchUtil {
 					HttpResponse response = httpClient.execute(httpRequest);
 					if(response.getStatusLine().getStatusCode() == 200){
 						result = EntityUtils.toString(response.getEntity());
+						if(result == null){
+							result = "14";
+						}else if(result.equals("0")){
+							result = "15";
+						}
 					}else{						
 						result = "1";
 					}
@@ -93,11 +98,7 @@ public class SwitchUtil {
 					}
 				}
 				
-				if(result == null){
-					return null;
-				}else{
-					return result;
-				}
+				return result;
 			}
 			
 			@Override
