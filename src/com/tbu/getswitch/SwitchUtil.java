@@ -61,7 +61,7 @@ public class SwitchUtil {
 							result = "15";
 						}
 					}else{						
-						result = "1";
+						result = String.valueOf(response.getStatusLine().getStatusCode());
 					}
 					Log.i(TAG,"result=" + result);
 				} catch (ConnectionPoolTimeoutException e) {
@@ -112,7 +112,7 @@ public class SwitchUtil {
 							callback.result(false, 8);
 							e.printStackTrace();
 						}
-					}else if(result.length() == 1){
+					}else if(result.length() <= 3){
 						try{
 							callback.result(false, Integer.valueOf(result));
 						}catch(NumberFormatException e){
